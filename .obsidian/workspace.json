@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "reconfigure mongodb replica set.md",
+                "file": "Keeping Programs Alive During a Crash or Reboot.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "reconfigure mongodb replica set"
+              "title": "Keeping Programs Alive During a Crash or Reboot"
             }
           }
         ]
@@ -164,6 +164,8 @@
   },
   "active": "50ee6b5dc3e30c33",
   "lastOpenFiles": [
+    "README.md",
+    "Keeping Programs Alive During a Crash or Reboot.md",
     "images/reconfigError.png",
     "images/reconfig.png",
     "images/cfg.png",
@@ -175,7 +177,6 @@
     "images/statusReplSet2.png",
     "images/statusReplSet1.png",
     "images/statusReplSet.png",
-    "images/initiatingReplSet.png",
     "reconfigure mongodb replica set.md",
     "images.md",
     "images",
