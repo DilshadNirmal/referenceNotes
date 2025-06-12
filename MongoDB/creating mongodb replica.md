@@ -79,7 +79,7 @@ A MongoDB replica set allows for high availability and redundancy by replicating
     mongod --bind_ip 0.0.0.0 --dbpath ../27019 --port 27019 --replSet "rs0"
     ```
 	
-	![runningInstance](./images/runningInstance.png)
+	![runningInstance](../images/runningInstance.png)
 
 > **Note:** If you updated `mongod.cfg` as described earlier, the `--bind_ip` flag can be omitted.
 
@@ -132,9 +132,9 @@ A MongoDB replica set allows for high availability and redundancy by replicating
     });
     ```
 	
-	![initiatingReplSet](./images/initiatingReplSet.png)
+	![initiatingReplSet](../images/initiatingReplSet.png)
 	
-	![statusReplSet](./images/statusReplSet.png)
+	![statusReplSet](../images/statusReplSet.png)
 	
 	
 1. Verify the replica set initialization:
@@ -143,9 +143,9 @@ A MongoDB replica set allows for high availability and redundancy by replicating
     rs.status()
     ```
 	
-	![statusReplSet1](./images/statusReplSet1.png)
+	![statusReplSet1](../images/statusReplSet1.png)
 	
-	![statusReplSet2](./images/statusReplSet2.png)
+	![statusReplSet2](../images/statusReplSet2.png)
 	
 	
 
@@ -173,7 +173,7 @@ mongosh --port 27018
 mongosh --port 27019
 ```
 
-![instancerunning](./images/instanceRunning.png)
+![instancerunning](../images/instanceRunning.png)
 
 ---
 
