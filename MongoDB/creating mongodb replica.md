@@ -101,7 +101,7 @@ A MongoDB replica set allows for high availability and redundancy by replicating
     
     If replication is not enabled, you will see an error like `MongoServerError[NoReplicationEnabled]`.
 	
-	![noReplicationEnabled](./images/noReplicationEnabled.png)
+	![noReplicationEnabled](../images/noReplicationEnabled.png)
 	
     
 3. Switch to the `admin` database:
