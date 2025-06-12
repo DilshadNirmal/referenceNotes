@@ -25,7 +25,7 @@ This will return your replica set configuration. Now, even if you try to initiat
     cfg = rs.conf()
     ```
 	
-	![cfg](./images/cfg.png)
+	![cfg](../images/cfg.png)
 	
     This `cfg` variable will now hold your current replica set config.
     
@@ -36,7 +36,7 @@ This will return your replica set configuration. Now, even if you try to initiat
     cfg.members[1].priority = 2
     ```
 	
-	![reconfig](./images/reconfig.png)
+	![reconfig](../images/reconfig.png)
 	
     Feel free to make other adjustments here as needed.
     
@@ -56,7 +56,7 @@ This will return your replica set configuration. Now, even if you try to initiat
     
     However, if the replica set is already initialized, this might throw an `[AlreadyInitialized]` error.
 	
-	![reconfigError](./images/reconfigError.png)
+	![reconfigError](../images/reconfigError.png)
 	
 4. **Apply the Changes**  
     Now, reapply your modified config using:
