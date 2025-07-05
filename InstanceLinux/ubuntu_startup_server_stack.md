@@ -1,10 +1,18 @@
 # 🚀 Ubuntu Server Stack Installation Script
 
-This repository contains a bash script to fully provision a **Node.js backend environment** on an Ubuntu-based server.  
-It installs and configures all necessary tools for running modern web applications, including **MongoDB, Redis, Node.js (via FNM), PM2, PNPM**, and **Nginx**.
+This script provisions a complete **Node.js backend environment** on a fresh Ubuntu server.
 
-> ✅ Tested on: **Ubuntu 22.04 (Jammy Jellyfish)**  
-> 🛠️ Use for: Fresh VM/server setup on cloud (e.g., GCP, AWS, DigitalOcean)
+It automates installation and setup of core services required for production-ready web apps, including:
+
+- **Node.js (via FNM)** with **PNPM** for fast package management
+- **PM2** for process monitoring
+- **MongoDB 7.0** and **Redis** for database and caching
+- **Nginx** for serving and reverse proxying
+
+> ✅ **Tested on**: Ubuntu 22.04 LTS (Jammy Jellyfish)  
+> 🌐 **Ideal for**: First-time setup of cloud VMs (GCP, AWS, DigitalOcean)
+
+Use this script to bootstrap projects quickly and consistently.
 
 ---
 

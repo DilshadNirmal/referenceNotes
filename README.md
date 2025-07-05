@@ -1,40 +1,48 @@
-# Reference Notes Repository
+# 🗃️ Reference Notes Repository
 
-This repository contains technical reference documentation and guides for various technologies and systems. Each directory contains specific documentation related to its topic.
+This repository serves as a central knowledge base and technical reference for infrastructure provisioning, development stack setup, and tooling integrations across various platforms and services.
 
-## Contents
+It contains step-by-step guides, provisioning scripts, and configuration details—suitable for internal engineering use, onboarding, or system rebuilds.
 
-### InstanceLinux
+## 📂 Contents
 
-Contains documentation about Linux instance management, including:
+### 🐧 InstanceLinux
 
-- [Program management and resilience strategies](InstanceLinux/keeping_programs_alive_during_a_crash_or_reboot.md)
-- [Keeping programs alive during crashes or reboots](InstanceLinux/keeping_programs_alive_during_a_crash_or_reboot.md)
-- [Ubuntu starup server commands](InstanceLinux/ubuntu_startup_server_stack.md)
+Linux server and system-level configurations:
 
-### MongoDB
+- [Keeping programs alive after crashes or reboots](InstanceLinux/keeping_programs_alive_during_a_crash_or_reboot.md)
+- [Automated backend stack setup on Ubuntu (Node.js, MongoDB, Redis, etc.)](InstanceLinux/ubuntu_startup_server_stack.md)
 
-Comprehensive MongoDB documentation covering:
+### 🍃 MongoDB
 
-- [Creating and managing MongoDB replicas (Windows)](MongoDB/creating_mongodb_replica_windows.md)
-- [Advanced replica set reconfiguration procedures](MongoDB/reconfigure_mongodb_replica_set.md)
-- [Replica set setup and configuration (VM)](MongoDB/mongodb_replicaset_setup_vm.md)
+Guides and recipes for managing MongoDB deployments:
 
-### Slack
+- [Setting up MongoDB replica set on Windows](MongoDB/creating_mongodb_replica_windows.md)
+- [Advanced replica set reconfiguration](MongoDB/reconfigure_mongodb_replica_set.md)
+- [Replica set setup on cloud VMs](MongoDB/mongodb_replicaset_setup_vm.md)
 
-Documentation related to Slack integration and automation, including:
+### 💬 Slack
 
-- [Bot integration for messaging](Slack/bot_integration_for_messaging.md)
+Slack automation and bot-based integration:
 
-## Usage
-
-Each document is written in Markdown format for easy reading and editing. The documentation is organized by technology stacks for easy reference.
-
-## Contributing
-
-Feel free to add new documentation or update existing documents with additional information or corrections.
+- [Creating a Slack bot to receive alerts from external services](Slack/bot_integration_for_messaging.md)
 
 ---
 
-_Created on 2025-06-20 by Dilshad Nirmal_
-_Last Updated: 2025-06-20_
+## 🧰 Usage
+
+Each document is written in **Markdown** for clear readability and editability.  
+Refer to the respective directory for the latest instructions, environment setup, or script references.
+
+## 🤝 Contributing
+
+Feel free to:
+
+- Add new documentation in appropriate folders.
+- Improve accuracy or depth of existing files.
+- Contribute use-case examples or architecture diagrams.
+
+---
+
+_Created by: Dilshad Nirmal on 2025-06-20_
+_Last Updated: 2025-07-25_
