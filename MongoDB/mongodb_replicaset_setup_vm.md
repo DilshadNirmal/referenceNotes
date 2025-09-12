@@ -10,12 +10,13 @@ This document captures the complete setup of a geographically distributed MongoD
 
 ### VM Provisioning
 
-* Launched 3 VM instances in different GCP regions.
-* Chose Fedora/Ubuntu as base OS.
-* Opened necessary firewall ports for MongoDB:
+- Launched 3 VM instances in different GCP regions.
+- Chose Fedora/Ubuntu as base OS.
+- Opened necessary firewall ports for MongoDB:
 
-  * **27017**, **27018**, **27019** (optional custom ports).
-* DNS hostnames were configured for each instance to avoid using public IPs directly.
+  - **27017**, **27018**, **27019** (optional custom ports).
+
+- DNS hostnames were configured for each instance to avoid using public IPs directly.
 
 > \[!note]
 > **Use Hostnames Instead of IPs**
@@ -31,15 +32,15 @@ sudo hostnamectl set-hostname mongo-node-1  # Change per node
 ```
 
 > \[!note]
-> *Optional*
+> _Optional_
 > MongoDB does not require the system hostname to be set to a specific name. It is optional.
 >
-> *Recommended*
+> _Recommended_
 > Setting a proper hostname makes:
 >
-> * Logs and monitoring easier to interpret
-> * Node identity more clear in `rs.status()`
-> * Host-based DNS entries (like `mongo1.internal`) more meaningful
+> - Logs and monitoring easier to interpret
+> - Node identity more clear in `rs.status()`
+> - Host-based DNS entries (like `mongo1.internal`) more meaningful
 
 ---
 
@@ -94,8 +95,8 @@ timedatectl status
 
 Look for:
 
-* `System clock synchronized: yes`
-* `NTP service: active` or clocks in sync even if shows `n/a`
+- `System clock synchronized: yes`
+- `NTP service: active` or clocks in sync even if shows `n/a`
 
 ---
 
@@ -110,7 +111,7 @@ replication:
   replSetName: "rs0"
 net:
   bindIp: 0.0.0.0
-  port: 27017  # or 27018, 27019 for other nodes
+  port: 27017 # or 27018, 27019 for other nodes
 ```
 
 Restart MongoDB:
@@ -175,15 +176,31 @@ rs.initiate({
   members: [
     { _id: 0, host: "mongo1.internal:27017" },
     { _id: 1, host: "mongo2.internal:27018" },
-    { _id: 2, host: "mongo3.internal:27019" }
-  ]
-})
+    { _id: 2, host: "mongo3.internal:27019" },
+  ],
+});
+```
+
+To initialize single node replica set:
+
+```js
+conf.members = [
+  {
+    _id: 0,
+    host: "lab.xyma:27017",
+    arbiterOnly: false,
+    buildIndexes: true,
+    hidden: false,
+    priority: 1,
+    votes: 1,
+  },
+];
 ```
 
 Check:
 
 ```js
-rs.status()
+rs.status();
 ```
 
 > \[!note]
@@ -222,15 +239,16 @@ mongosh --host mongo1.internal --port 27017 -u adminUser -p securePass123 --auth
 ### Server Code
 
 ```js
-const express = require('express');
-const { MongoClient } = require('mongodb');
+const express = require("express");
+const { MongoClient } = require("mongodb");
 const app = express();
 app.use(express.json());
 
-const uri = "mongodb://adminUser:securePass123@mongo1.internal:27017,mongo2.internal:27018,mongo3.internal:27019/?replicaSet=rs0&authSource=admin";
+const uri =
+  "mongodb://adminUser:securePass123@mongo1.internal:27017,mongo2.internal:27018,mongo3.internal:27019/?replicaSet=rs0&authSource=admin";
 const client = new MongoClient(uri);
 
-app.post('/add', async (req, res) => {
+app.post("/add", async (req, res) => {
   try {
     await client.connect();
     const db = client.db("test");
@@ -241,7 +259,7 @@ app.post('/add', async (req, res) => {
   }
 });
 
-app.listen(3001, () => console.log('Server running on port 3001'));
+app.listen(3001, () => console.log("Server running on port 3001"));
 ```
 
 ### Test Insert
@@ -267,22 +285,22 @@ db.data.find().pretty()
 
 ## 11. Notes & Issues Faced
 
-* **No primary node initially:** Caused by time sync issues. Resolved using NTP.
-* **Keyfile permission issues:** Ensure correct ownership and 400 permission.
-* **Cannot create user:** Must wait until replica set has a PRIMARY.
-* **Ports:** Use different ports (27017, 27018, 27019) per instance if needed.
-* **Use DNS names:** Prefer internal DNS (e.g., `mongo1.internal`) over IPs.
-* **Authentication Failed:** Usually from mismatched keyfile or wrong user credentials.
+- **No primary node initially:** Caused by time sync issues. Resolved using NTP.
+- **Keyfile permission issues:** Ensure correct ownership and 400 permission.
+- **Cannot create user:** Must wait until replica set has a PRIMARY.
+- **Ports:** Use different ports (27017, 27018, 27019) per instance if needed.
+- **Use DNS names:** Prefer internal DNS (e.g., `mongo1.internal`) over IPs.
+- **Authentication Failed:** Usually from mismatched keyfile or wrong user credentials.
 
 ---
 
 ## To-Do (Future Expansion)
 
-* Create separate documentation for [Deploying Geographically Distributed Replica Sets](https://www.mongodb.com/docs/manual/tutorial/deploy-geographically-distributed-replica-set/)
-* Setup Replica Set Monitoring (MongoDB Ops Manager / Compass)
-* Test Automatic Failover
-* Add Express routes to monitor replica state or promote member
+- Create separate documentation for [Deploying Geographically Distributed Replica Sets](https://www.mongodb.com/docs/manual/tutorial/deploy-geographically-distributed-replica-set/)
+- Setup Replica Set Monitoring (MongoDB Ops Manager / Compass)
+- Test Automatic Failover
+- Add Express routes to monitor replica state or promote member
 
 ---
 
-*Created on 2025-06-12 by Dilshad Nirmal (project: Replica Set PoC)*
+_Created on 2025-06-12 by Dilshad Nirmal (project: Replica Set PoC)_
