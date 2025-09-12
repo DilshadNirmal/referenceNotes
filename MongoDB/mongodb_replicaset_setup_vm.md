@@ -197,6 +197,22 @@ conf.members = [
 ];
 ```
 
+```js
+conf.members = [
+  {
+    _id: 2, // Keep the old _id for this member
+    host: "lab.xyma:27017",
+    arbiterOnly: false,
+    buildIndexes: true,
+    hidden: false,
+    priority: 1,
+    votes: 1,
+  },
+];
+conf.version += 1;
+rs.reconfig(conf, { force: true });
+```
+
 Check:
 
 ```js
