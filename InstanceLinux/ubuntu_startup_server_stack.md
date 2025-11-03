@@ -80,7 +80,7 @@ pm2 update
 log "PM2 version: $(pm2 -v)"
 
 # ====== Install MongoDB 8.0 ======
-log "Setting up MongoDB 7.0 repository..."
+log "Setting up MongoDB 8.0 repository..."
 curl -fsSL https://www.mongodb.org/static/pgp/server-8.0.asc | \
    sudo gpg -o /usr/share/keyrings/mongodb-server-8.0.gpg \
    --dearmor
